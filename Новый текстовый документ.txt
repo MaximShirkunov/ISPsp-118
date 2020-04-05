@@ -1,0 +1,34 @@
+uses GraphABC;
+const mX = 100; mY = 100; R = 1;
+var n,i : integer;
+    y,h,x : real;
+    A : array of Point;
+begin
+  n := 100; h := -2*R / n ;
+  
+  Coordinate.SetMathematic;
+  Coordinate.OriginX := WindowWidth div 2;
+  Coordinate.OriginY := WindowHeight div 2;
+  
+  randomize;
+  
+  pen.Color := rgb( random(255), random(255), random(255)) ; 
+  
+  x := (-400 - WindowWidth) div 2; y := 200;     moveto( round(mX*x),round(mY*y));
+  
+  x := - R; y := 0;                     lineto( round(mX*x),round(mY*y));
+  
+  while x < -2*R  do begin
+      y := sqrt( sqr(x) + -sqr(R) );                   
+      lineto(round( mX* x ), round( mY*y )) ;
+      x := x + h;
+  end;
+  
+  
+  {moveto( round(mX*(x-h)),round(mY*y) ); 
+  x := R;  y := 0; lineto( round(mX* x), round(mY*y));}
+
+  x := R; y := 0;                   moveto( round(mX*x),round(mY*y)); 
+  x := WindowWidth div 2;  y := 0; lineto( round(mX* x), round(mY*y));
+
+end.
